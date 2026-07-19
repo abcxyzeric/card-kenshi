@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Kenshi — Phán định xúc xắc</title>
+    <script type="module">
+      import { createPinia as e } from "https://testingcf.jsdelivr.net/npm/pinia/+esm";
+      var n = {
+        572(e, n, t) {
+          t.r(n);
+          var a = t(341),
+            r = t.n(a),
+            s = t(275),
+            i = t.n(s)()(r());
+          (i.push([
+            e.id,
+            "@import url(https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Noto+Serif+SC:wght@400;600;700;900&display=swap);",
+          ]),
+            i.push([
+              e.id,
+              ":root{--kenshi-sand:#d5c7b2;--kenshi-rust:#b85331;--bg3-gold:#c6a664;--bg3-dark:#0f0e11;--panel-bg:rgba(20,18,22,0.85);--success-glow:rgba(198,166,100,0.6);--fail-glow:rgba(184,83,49,0.6);--crit-success-glow:rgba(0,255,200,0.6);--crit-fail-glow:rgba(255,0,50,0.6)}body{background-color:#1a181c;background-image:radial-gradient(circle at 50% 30%,#2a2522 0%,var(--bg3-dark) 100%);margin:0;padding:0;font-family:'Noto Serif SC','Outfit',serif}.page[data-v-34f50bf3]{width:100%}.dice-mount-point[data-v-34f50bf3]{width:100%;max-width:100%}.dice-check-container[data-v-34f50bf3]{width:100%;background:var(--panel-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:0;padding:0;position:relative;box-shadow:0 30px 60px rgba(0,0,0,0.6);overflow:hidden;transition:all 0.6s cubic-bezier(0.2,0.8,0.2,1)}.dice-check-inner[data-v-34f50bf3]{background:linear-gradient(180deg,rgba(30,28,33,0.9) 0%,rgba(15,14,17,0.95) 100%);border-radius:0;padding:24px 32px;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2}.dice-check-inner[data-v-34f50bf3]::before{content:'';position:absolute;left:50%;transform:translateX(-50%);top:0;width:70%;height:2px;background:linear-gradient(90deg,transparent,var(--bg3-gold),transparent);opacity:0.6}.check-header[data-v-34f50bf3]{font-size:1.1rem;color:var(--kenshi-sand);letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:12px;text-shadow:0 2px 4px rgba(0,0,0,0.8)}.check-header[data-v-34f50bf3]::before,.check-header[data-v-34f50bf3]::after{content:'';display:block;width:40px;height:2px;background:rgba(198,166,100,0.3)}.check-arena[data-v-34f50bf3]{display:flex;justify-content:space-between;align-items:center;width:100%;margin-bottom:24px}.arena-side[data-v-34f50bf3]{display:flex;flex-direction:column;align-items:center;width:40%}.arena-side-label[data-v-34f50bf3]{font-size:0.85rem;color:rgba(213,199,178,0.5);letter-spacing:3px;margin-bottom:8px;text-transform:uppercase}.d20-container[data-v-34f50bf3]{position:relative;width:90px;height:90px;display:flex;justify-content:center;align-items:center}.d20-svg[data-v-34f50bf3]{position:absolute;top:0;left:0;width:100%;height:100%;stroke:var(--bg3-gold);stroke-width:1.5;fill:rgba(0,0,0,0.4);filter:drop-shadow(0 0 8px rgba(198,166,100,0.2));transition:all 0.4s ease}.roll-number[data-v-34f50bf3]{font-family:'Outfit',sans-serif;font-weight:900;font-size:2.4rem;color:var(--bg3-gold);z-index:2;text-shadow:0 0 15px rgba(198,166,100,0.4);font-variant-numeric:tabular-nums}.dc-container[data-v-34f50bf3]{position:relative;width:80px;height:80px;display:flex;justify-content:center;align-items:center;background:rgba(0,0,0,0.5);border:2px solid rgba(213,199,178,0.2);transform:rotate(45deg);border-radius:8px}.dc-number[data-v-34f50bf3]{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.8rem;color:var(--kenshi-sand);transform:rotate(-45deg);text-shadow:0 2px 5px rgba(0,0,0,0.8)}.vs-badge[data-v-34f50bf3]{font-family:'Outfit',sans-serif;font-weight:900;font-style:italic;font-size:1.5rem;color:rgba(255,255,255,0.15);letter-spacing:2px}.result-wrapper[data-v-34f50bf3]{width:100%;display:flex;flex-direction:column;align-items:center}.check-result[data-v-34f50bf3]{font-size:1.4rem;font-weight:800;letter-spacing:8px;color:transparent;opacity:0;transform:scale(0.9);transition:all 0.6s cubic-bezier(0.175,0.885,0.32,1.275);background-clip:text;-webkit-background-clip:text}.roll-details[data-v-34f50bf3]{margin-top:12px;padding-top:14px;border-top:1px solid rgba(198,166,100,0.15);width:80%;text-align:center;opacity:0;transform:translateY(10px);transition:all 0.6s ease 0.4s}.roll-breakdown[data-v-34f50bf3]{font-family:'Outfit','Noto Serif SC',sans-serif;color:var(--bg3-gold);font-size:1rem;font-weight:700;letter-spacing:1.5px;margin-bottom:6px;text-shadow:0 0 8px rgba(198,166,100,0.3)}.roll-formula[data-v-34f50bf3]{font-size:0.8rem;color:rgba(213,199,178,0.4);letter-spacing:2px;font-weight:400}.check-result.is-visible[data-v-34f50bf3]{opacity:1;transform:scale(1)}.roll-details.is-visible[data-v-34f50bf3]{opacity:1;transform:translateY(0)}.d20-container.is-rolling .d20-svg[data-v-34f50bf3]{animation:spinD20-34f50bf3 0.8s linear infinite;stroke:rgba(255,255,255,0.6);filter:drop-shadow(0 0 15px rgba(255,255,255,0.5))}.d20-container.is-rolling .roll-number[data-v-34f50bf3]{color:#fff;text-shadow:0 0 10px rgba(255,255,255,0.8);filter:blur(0.5px)}@keyframes spinD20-34f50bf3{0%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.1)}100%{transform:rotate(360deg) scale(1)}}.dice-check-container.state-success[data-v-34f50bf3]{background:linear-gradient(135deg,rgba(198,166,100,0.8),rgba(15,14,17,0))}.state-success .d20-svg[data-v-34f50bf3]{stroke:var(--bg3-gold);fill:rgba(198,166,100,0.1)}.state-success .roll-number[data-v-34f50bf3]{color:var(--bg3-gold);text-shadow:0 0 20px var(--bg3-gold);transform:scale(1.1)}.state-success .check-result[data-v-34f50bf3]{background-image:linear-gradient(90deg,#fff,var(--bg3-gold),#fff);text-shadow:0 0 20px var(--success-glow)}.dice-check-container.state-fail[data-v-34f50bf3]{background:linear-gradient(135deg,rgba(184,83,49,0.8),rgba(15,14,17,0))}.state-fail .d20-svg[data-v-34f50bf3]{stroke:var(--kenshi-rust);fill:rgba(184,83,49,0.1)}.state-fail .roll-number[data-v-34f50bf3]{color:var(--kenshi-rust);text-shadow:0 0 20px var(--kenshi-rust);transform:scale(0.95)}.state-fail .check-result[data-v-34f50bf3]{background-image:linear-gradient(90deg,#fff,var(--kenshi-rust),#fff);text-shadow:0 0 20px var(--fail-glow)}.state-fail .roll-breakdown[data-v-34f50bf3]{color:var(--kenshi-rust);text-shadow:0 0 8px rgba(184,83,49,0.3)}.dice-check-container.state-crit-success[data-v-34f50bf3]{background:linear-gradient(135deg,rgba(0,255,200,0.6),rgba(15,14,17,0));box-shadow:0 0 50px rgba(0,255,200,0.15)}.state-crit-success .d20-svg[data-v-34f50bf3]{stroke:#00ffc8;fill:rgba(0,255,200,0.15);filter:drop-shadow(0 0 10px rgba(0,255,200,0.5))}.state-crit-success .roll-number[data-v-34f50bf3]{color:#00ffc8;text-shadow:0 0 30px #00ffc8;transform:scale(1.2)}.state-crit-success .check-result[data-v-34f50bf3]{background-image:linear-gradient(90deg,#fff,#00ffc8,#fff);text-shadow:0 0 20px var(--crit-success-glow)}.state-crit-success .roll-breakdown[data-v-34f50bf3]{color:#00ffc8;text-shadow:0 0 10px rgba(0,255,200,0.5)}.dice-check-container.state-crit-fail[data-v-34f50bf3]{background:linear-gradient(135deg,rgba(255,0,50,0.8),rgba(15,14,17,0))}.state-crit-fail .d20-svg[data-v-34f50bf3]{stroke:#ff0032;fill:rgba(255,0,50,0.1)}.state-crit-fail .roll-number[data-v-34f50bf3]{color:#ff0032;text-shadow:0 0 30px #ff0032}.state-crit-fail .check-result[data-v-34f50bf3]{background-image:linear-gradient(90deg,#fff,#ff0032,#fff);text-shadow:0 0 20px var(--crit-fail-glow)}.state-crit-fail .roll-breakdown[data-v-34f50bf3]{color:#ff0032}@media (max-width:540px){.dice-check-inner[data-v-34f50bf3]{padding:18px 18px}.check-header[data-v-34f50bf3]{font-size:1rem;letter-spacing:1px}.roll-number[data-v-34f50bf3]{font-size:2rem}.dc-number[data-v-34f50bf3]{font-size:1.6rem}}\n",
+              "",
+              {
+                version: 3, sources: [], names: [], mappings: "", sourcesContent: [], sourceRoot: "",
+              },
+            ]));
+          const o = i;
+          t.d(n, ["default", 0, o]);
+        },
+        275(e) {
+          e.exports = function (e) {
+            var n = [];
+            return (
+              (n.toString = function () {
+                return this.map(function (n) {
+                  var t = "",
+                    a = void 0 !== n[5];
+                  return (
+                    n[4] && (t += "@supports (".concat(n[4], ") {")),
+                    n[2] && (t += "@media ".concat(n[2], " {")),
+                    a &&
+                      (t += "@layer".concat(
+                        n[5].length > 0 ? " ".concat(n[5]) : "",
+                        " {",
+                      )),
+                    (t += e(n)),
+                    a && (t += "}"),
+                    n[2] && (t += "}"),
+                    n[4] && (t += "}"),
+                    t
+                  );
+                }).join("");
+              }),
+              (n.i = function (e, t, a, r, s) {
+                "string" == typeof e && (e = [[null, e, void 0]]);
+                var i = {};
+                if (a)
+                  for (var o = 0; o < this.length; o++) {
+                    var l = this[o][0];
+                    null != l && (i[l] = !0);
+                  }
+                for (var c = 0; c < e.length; c++) {
+                  var d = [].concat(e[c]);
+                  (a && i[d[0]]) ||
+                    (void 0 !== s &&
+                      (void 0 === d[5] ||
+                        (d[1] = "@layer"
+                          .concat(d[5].length > 0 ? " ".concat(d[5]) : "", " {")
+                          .concat(d[1], "}")),
+                      (d[5] = s)),
+                    t &&
+                      (d[2]
+                        ? ((d[1] = "@media "
+                            .concat(d[2], " {")
+                            .concat(d[1], "}")),
+                          (d[2] = t))
+                        : (d[2] = t)),
+                    r &&
+                      (d[4]
+                        ? ((d[1] = "@supports ("
+                            .concat(d[4], ") {")
+                            .concat(d[1], "}")),
+                          (d[4] = r))
+                        : (d[4] = "".concat(r))),
+                    n.push(d));
+                }
+              }),
+              n
+            );
+          };
+        },
+        341(e) {
+          e.exports = function (e) {
+            var n = e[1],
+              t = e[3];
+            if (!t) return n;
+            if ("function" == typeof btoa) {
+              var a = btoa(unescape(encodeURIComponent(JSON.stringify(t)))),
+                r =
+                  "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(
+                    a,
+                  ),
+                s = "/*# ".concat(r, " */");
+              return [n].concat([s]).join("\n");
+            }
+            return [n].join("\n");
+          };
+        },
+        69(e, n, t) {
+          var a = t(572);
+          (a.__esModule && (a = a.default),
+            "string" == typeof a && (a = [[e.id, a, ""]]),
+            a.locals && (e.exports = a.locals));
+          (0, t(424).A)("3630a3f1", a, !1, { ssrId: !0 });
+        },
+        248(e, n) {
+          n.A = (e, n) => {
+            const t = e.__vccOpts || e;
+            for (const [e, a] of n) t[e] = a;
+            return t;
+          };
+        },
+        424(e, n, t) {
+          function a(e, n) {
+            for (var t = [], a = {}, r = 0; r < n.length; r++) {
+              var s = n[r],
+                i = s[0],
+                o = {
+                  id: e + ":" + r,
+                  css: s[1],
+                  media: s[2],
+                  sourceMap: s[3],
+                };
+              a[i]
+                ? a[i].parts.push(o)
+                : t.push((a[i] = { id: i, parts: [o] }));
+            }
+            return t;
+          }
+          t.d(n, { A: () => C });
+          var r = "undefined" != typeof document;
+          if ("undefined" != typeof DEBUG && DEBUG && !r)
+            throw new Error(
+              "vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.",
+            );
+          var s = {},
+            i =
+              r && (document.head || document.getElementsByTagName("head")[0]),
+            o = null,
+            l = 0,
+            c = !1,
+            d = function () {},
+            A = null,
+            f = "data-vue-ssr-id",
+            u =
+              "undefined" != typeof navigator &&
+              /msie [6-9]\b/.test(navigator.userAgent.toLowerCase());
+          function C(e, n, t, r) {
+            ((c = t), (A = r || {}));
+            var i = a(e, n);
+            return (
+              g(i),
+              function (n) {
+                for (var t = [], r = 0; r < i.length; r++) {
+                  var o = i[r];
+                  ((l = s[o.id]).refs--, t.push(l));
+                }
+                n ? g((i = a(e, n))) : (i = []);
+                for (r = 0; r < t.length; r++) {
+                  var l;
+                  if (0 === (l = t[r]).refs) {
+                    for (var c = 0; c < l.parts.length; c++) l.parts[c]();
+                    delete s[l.id];
+                  }
+                }
+              }
+            );
+          }
+          function g(e) {
+            for (var n = 0; n < e.length; n++) {
+              var t = e[n],
+                a = s[t.id];
+              if (a) {
+                a.refs++;
+                for (var r = 0; r < a.parts.length; r++) a.parts[r](t.parts[r]);
+                for (; r < t.parts.length; r++) a.parts.push(p(t.parts[r]));
+                a.parts.length > t.parts.length &&
+                  (a.parts.length = t.parts.length);
+              } else {
+                var i = [];
+                for (r = 0; r < t.parts.length; r++) i.push(p(t.parts[r]));
+                s[t.id] = { id: t.id, refs: 1, parts: i };
+              }
+            }
+          }
+          function m() {
+            var e = document.createElement("style");
+            return ((e.type = "text/css"), i.appendChild(e), e);
+          }
+          function p(e) {
+            var n,
+              t,
+              a = document.querySelector("style[" + f + '~="' + e.id + '"]');
+            if (a) {
+              if (c) return d;
+              a.parentNode.removeChild(a);
+            }
+            if (u) {
+              var r = l++;
+              ((a = o || (o = m())),
+                (n = h.bind(null, a, r, !1)),
+                (t = h.bind(null, a, r, !0)));
+            } else
+              ((a = m()),
+                (n = x.bind(null, a)),
+                (t = function () {
+                  a.parentNode.removeChild(a);
+                }));
+            return (
+              n(e),
+              function (a) {
+                if (a) {
+                  if (
+                    a.css === e.css &&
+                    a.media === e.media &&
+                    a.sourceMap === e.sourceMap
+                  )
+                    return;
+                  n((e = a));
+                } else t();
+              }
+            );
+          }
+          var b,
+            v =
+              ((b = []),
+              function (e, n) {
+                return ((b[e] = n), b.filter(Boolean).join("\n"));
+              });
+          function h(e, n, t, a) {
+            var r = t ? "" : a.css;
+            if (e.styleSheet) e.styleSheet.cssText = v(n, r);
+            else {
+              var s = document.createTextNode(r),
+                i = e.childNodes;
+              (i[n] && e.removeChild(i[n]),
+                i.length ? e.insertBefore(s, i[n]) : e.appendChild(s));
+            }
+          }
+          function x(e, n) {
+            var t = n.css,
+              a = n.media,
+              r = n.sourceMap;
+            if (
+              (a && e.setAttribute("media", a),
+              A.ssrId && e.setAttribute(f, n.id),
+              r &&
+                ((t += "\n/*# sourceURL=" + r.sources[0] + " */"),
+                (t +=
+                  "\n/*# sourceMappingURL=data:application/json;base64," +
+                  btoa(unescape(encodeURIComponent(JSON.stringify(r)))) +
+                  " */")),
+              e.styleSheet)
+            )
+              e.styleSheet.cssText = t;
+            else {
+              for (; e.firstChild;) e.removeChild(e.firstChild);
+              e.appendChild(document.createTextNode(t));
+            }
+          }
+        },
+      };
+      const t = {};
+      function a(e) {
+        const r = t[e];
+        if (void 0 !== r) return r.exports;
+        const s = (t[e] = { id: e, exports: {} });
+        return (n[e](s, s.exports, a), s.exports);
+      }
+      ((a.n = (e) => {
+        const n = e && e.__esModule ? () => e.default : () => e;
+        return (a.d(n, { a: n }), n);
+      }),
+        (a.d = (e, n) => {
+          if (Array.isArray(n))
+            for (var t = 0; t < n.length;) {
+              var r = n[t++],
+                s = n[t++];
+              a.o(e, r)
+                ? 0 === s && t++
+                : 0 === s
+                  ? Object.defineProperty(e, r, {
+                      enumerable: !0,
+                      value: n[t++],
+                    })
+                  : Object.defineProperty(e, r, { enumerable: !0, get: s });
+            }
+          else
+            for (var r in n)
+              a.o(n, r) &&
+                !a.o(e, r) &&
+                Object.defineProperty(e, r, { enumerable: !0, get: n[r] });
+        }),
+        (a.o = (e, n) => Object.prototype.hasOwnProperty.call(e, n)),
+        (a.r = (e) => {
+          (Symbol.toStringTag &&
+            Object.defineProperty(e, Symbol.toStringTag, { value: "Module" }),
+            Object.defineProperty(e, "__esModule", { value: !0 }));
+        }));
+      const r = Vue,
+        s = { class: "page" },
+        i = { id: "dice-mount-point", class: "dice-mount-point" },
+        o = { class: "dice-check-inner" },
+        l = { class: "check-header" },
+        c = { class: "check-arena" },
+        d = { class: "arena-side" },
+        A = { class: "roll-number" },
+        f = { class: "arena-side" },
+        u = { class: "dc-container" },
+        C = { class: "dc-number" },
+        g = { class: "result-wrapper" },
+        m = { class: "roll-breakdown" },
+        p = (0, r.defineComponent)({
+          __name: "App",
+          setup(e) {
+              const n = (0, r.ref)("Phán định"),
+              t = (0, r.ref)(null),
+              a = (0, r.ref)([]),
+              p = (0, r.ref)(10),
+              b = (0, r.ref)("?"),
+              v = (0, r.ref)("..."),
+              h = (0, r.ref)(""),
+              x = (0, r.ref)(""),
+              B = (0, r.ref)(!1),
+              w = (0, r.ref)(!1),
+              k = {
+                checkName: "",
+                baseRoll: 18,
+                modifiers: [
+                  { v: 3, n: "Nhanh nhẹn" },
+                  { v: 2, n: "Ban đêm" },
+                ],
+                dcTarget: 15,
+              },
+              y = (e) => Math.min(20, Math.max(1, Math.floor(e))),
+              E = (e) => e.replace(/^["'“”‘’]+|["'“”‘’]+$/g, "").trim(),
+              R = () => {
+                const e = getCurrentMessageId(),
+                  n = getChatMessages(e);
+                if (!n.length) return "";
+                const t = n[0].message ?? "";
+                return /<Destiny>[\s\S]*?<\/Destiny>/i.test(t) ? t : "";
+              },
+              N = (e) => {
+                let r = e;
+                if (e?.text) {
+                  const n = ((e) => {
+                    const n = e
+                      .split(/\r?\n/)
+                      .map((e) => e.trim())
+                      .filter(Boolean);
+                    let t = "",
+                      a = "",
+                      r = "",
+                      s = "",
+                      i = "",
+                      o = "",
+                      l = "",
+                      c = "";
+                    n.forEach((e) => {
+                      const n = e.match(/^([^:：]+)[:：]\s*(.+)$/);
+                      if (!n) return;
+                      const d = n[1].trim(),
+                        A = n[2].trim();
+                      if (
+                        ("Hành động" === d && (t = A),
+                        "Mục đích" === d && (a = A),
+                        "Loại" === d && (r = A),
+                        "Xúc xắc cơ bản" === d && (s = A),
+                        "Công thức tung" === d && (i = A),
+                        ("DC" !== d && "dc" !== d) || (o = A),
+                        "Tổng điểm" === d && (c = E(A)),
+                        "Kết quả" === d)
+                      ) {
+                        const e = ((e) => {
+                          const n = e.match(/["“”‘’](.+?)["“”‘’]/);
+                          return n ? n[1].trim() : "";
+                        })(A);
+                        e ? (l = e) : (c = E(A));
+                      }
+                    });
+                    const d = {},
+                      A = t ? E(t) : "",
+                      f = a ? E(a) : "";
+                    ((d.checkName = f && A ? `${f} · ${A}` : f || A || ""),
+                      s && (d.baseRoll = E(s)),
+                      o && (d.dcTarget = E(o)),
+                      c && (d.totalResult = E(c)));
+                    const u = i ? E(i) : "";
+                    if (u) {
+                      const e = u.replace(/\s+/g, "");
+                      d.formulaText = e;
+                      const n = e.match(/^(\d+)/);
+                      !s && n && (d.baseRoll = n[1]);
+                      const t = [],
+                        a = /([+-]\d+)(?:\(([^)]+)\))?/g;
+                      let r = null;
+                      for (; (r = a.exec(e));) {
+                        const e = Number(r[1]),
+                          n = r[2] ? r[2].trim() : "";
+                        Number.isFinite(e) && t.push({ v: e, n });
+                      }
+                      t.length && (d.modifiers = t);
+                    }
+                    return (
+                      l &&
+                        (l.includes("Đại thành công") && (d.baseRoll = 20),
+                        (l.includes("Đại thất bại") || l.includes("Đại thất bại")) &&
+                          (d.baseRoll = 1)),
+                      d
+                    );
+                  })(e.text);
+                  ((r = { ...n, ...e }), delete r.text);
+                }
+                const s = ((e) => {
+                  const n = Array.isArray(e.modifiers)
+                      ? e.modifiers
+                          .map((e) => ({
+                            v: Number(e.v ?? 0),
+                            n: String(e.n ?? ""),
+                          }))
+                          .filter((e) => e.n || e.v)
+                      : [],
+                    t = e.baseRoll,
+                    a =
+                      "string" == typeof t
+                        ? "auto" === t
+                          ? null
+                          : Number(t)
+                        : (t ?? null),
+                    r =
+                      "string" == typeof e.dcTarget
+                        ? Number(e.dcTarget)
+                        : e.dcTarget;
+                  return {
+                    checkName: String(e.checkName ?? k.checkName),
+                    baseRoll: Number.isFinite(a) ? y(a) : null,
+                    modifiers: n.length ? n : k.modifiers,
+                    dcTarget: Number.isFinite(Number(r))
+                      ? Math.max(0, Math.floor(Number(r)))
+                      : k.dcTarget,
+                  };
+                })(r ?? k);
+                ((e) => {
+                  ((n.value = e.checkName),
+                    (t.value = e.baseRoll ?? null),
+                    (a.value = e.modifiers),
+                    (p.value = e.dcTarget));
+                })(s);
+                const i = s.baseRoll ?? y(Math.floor(20 * Math.random()) + 1),
+                  o = s.modifiers ?? [];
+                ((x.value = ""),
+                  (v.value = "..."),
+                  (h.value = ""),
+                  (b.value = "?"),
+                  (w.value = !1),
+                  (B.value = !0));
+                let l = i,
+                  c = `${i}`;
+                (r?.formulaText && (c = r.formulaText),
+                  o.forEach((e) => {
+                    if (((l += e.v), !r?.formulaText)) {
+                      const n = e.v >= 0 ? "+" : "-",
+                        t = e.n ? `(${e.n})` : "";
+                      c += ` ${n} ${Math.abs(e.v)}${t}`;
+                    }
+                  }));
+                const d = r?.totalResult;
+                if ("string" == typeof d || "number" == typeof d) {
+                  const e = Number(d);
+                  Number.isFinite(e) && (l = e);
+                }
+                const A = 20 === i,
+                  f = 1 === i;
+                let u = 0;
+                const C = window.setInterval(() => {
+                  ((b.value = Math.floor(20 * Math.random()) + 5),
+                    (u += 1),
+                    u >= 20 &&
+                      (window.clearInterval(C),
+                      (B.value = !1),
+                      A
+                        ? ((b.value = 20),
+                          (x.value = "state-crit-success"),
+                          (v.value = "ĐẠI THÀNH CÔNG (CRITICAL)"),
+                          (h.value = "Xúc xắc tự nhiên: 20 (không cần cộng, thành công ngay)"))
+                        : f
+                          ? ((b.value = 1),
+                            (x.value = "state-crit-fail"),
+                            (v.value = "ĐẠI THẤT BẠI (FUMBLE)"),
+                            (h.value = "Xúc xắc tự nhiên: 1 (không cần cộng, thất bại ngay)"))
+                          : ((b.value = l),
+                            (h.value = `${c}`),
+                            l >= s.dcTarget
+                              ? ((x.value = "state-success"),
+                                (v.value = "THÀNH CÔNG (SUCCESS)"))
+                              : ((x.value = "state-fail"),
+                                (v.value = "THẤT BẠI (FAILURE)"))),
+                      (w.value = !0)));
+                }, 40);
+              };
+            let S = null;
+            return (
+              (0, r.onMounted)(() => {
+                const e = R();
+                if (e) N({ text: e });
+                else {
+                  const e = (() => {
+                    const e = new URLSearchParams(window.location.search),
+                      n = e.get("data");
+                    if (n)
+                      try {
+                        return JSON.parse(decodeURIComponent(n));
+                      } catch {
+                        return null;
+                      }
+                    const t = e.get("text");
+                    if (t) return { text: decodeURIComponent(t) };
+                    if (
+                      e.has("check") ||
+                      e.has("base") ||
+                      e.has("dc") ||
+                      e.has("mods")
+                    ) {
+                      let n = [];
+                      const t = e.get("mods");
+                      if (t)
+                        try {
+                          n = JSON.parse(decodeURIComponent(t));
+                        } catch {
+                          n = t.split(",").map((e) => {
+                            const [n, t] = e.split(":");
+                            return { n: n?.trim() ?? "", v: Number(t ?? 0) };
+                          });
+                        }
+                      return {
+                        checkName: e.get("check") ?? void 0,
+                        baseRoll: e.get("base") ?? void 0,
+                        dcTarget: e.get("dc") ?? void 0,
+                        modifiers: n,
+                      };
+                    }
+                    return null;
+                  })();
+                  N(e || k);
+                }
+                ((S = eventOn(tavern_events.MESSAGE_UPDATED, (e) => {
+                  e === getCurrentMessageId() && N({ text: R() });
+                })),
+                  (window.setKenshiDiceParams = (e) => N(e)));
+              }),
+              (0, r.onBeforeUnmount)(() => {
+                S && S.stop();
+              }),
+              (e, t) => (
+                (0, r.openBlock)(),
+                (0, r.createElementBlock)("div", s, [
+                  (0, r.createElementVNode)("div", i, [
+                    (0, r.createElementVNode)(
+                      "div",
+                      {
+                        class: (0, r.normalizeClass)([
+                          "dice-check-container",
+                          x.value,
+                        ]),
+                      },
+                      [
+                        (0, r.createElementVNode)("div", o, [
+                          (0, r.createElementVNode)(
+                            "div",
+                            l,
+                            (0, r.toDisplayString)(n.value),
+                            1,
+                          ),
+                          (0, r.createElementVNode)("div", c, [
+                            (0, r.createElementVNode)("div", d, [
+                              t[1] ||
+                                (t[1] = (0, r.createElementVNode)(
+                                  "div",
+                                  { class: "arena-side-label" },
+                                  "TOTAL",
+                                  -1,
+                                )),
+                              (0, r.createElementVNode)(
+                                "div",
+                                {
+                                  class: (0, r.normalizeClass)([
+                                    "d20-container",
+                                    { "is-rolling": B.value },
+                                  ]),
+                                },
+                                [
+                                  t[0] ||
+                                    (t[0] = (0, r.createStaticVNode)(
+                                      '<svg class="d20-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" data-v-34f50bf3><polygon points="50,5 95,25 95,75 50,95 5,75 5,25" fill-opacity="0.1" data-v-34f50bf3></polygon><polygon points="50,5 25,40 75,40" fill-opacity="0.2" data-v-34f50bf3></polygon><polygon points="50,95 25,60 75,60" fill-opacity="0.2" data-v-34f50bf3></polygon><polygon points="25,40 75,40 95,25 95,75 75,60 25,60 5,75 5,25" fill-opacity="0.05" data-v-34f50bf3></polygon><line x1="50" y1="5" x2="25" y2="40" data-v-34f50bf3></line><line x1="50" y1="5" x2="75" y2="40" data-v-34f50bf3></line><line x1="5" y1="25" x2="25" y2="40" data-v-34f50bf3></line><line x1="95" y1="25" x2="75" y2="40" data-v-34f50bf3></line><line x1="25" y1="40" x2="25" y2="60" data-v-34f50bf3></line><line x1="75" y1="40" x2="75" y2="60" data-v-34f50bf3></line><line x1="25" y1="40" x2="75" y2="40" data-v-34f50bf3></line><line x1="25" y1="60" x2="75" y2="60" data-v-34f50bf3></line><line x1="50" y1="95" x2="25" y2="60" data-v-34f50bf3></line><line x1="50" y1="95" x2="75" y2="60" data-v-34f50bf3></line><line x1="5" y1="75" x2="25" y2="60" data-v-34f50bf3></line><line x1="95" y1="75" x2="75" y2="60" data-v-34f50bf3></line><line x1="25" y1="40" x2="75" y2="60" data-v-34f50bf3></line></svg>',
+                                      1,
+                                    )),
+                                  (0, r.createElementVNode)(
+                                    "span",
+                                    A,
+                                    (0, r.toDisplayString)(b.value),
+                                    1,
+                                  ),
+                                ],
+                                2,
+                              ),
+                            ]),
+                            t[3] ||
+                              (t[3] = (0, r.createElementVNode)(
+                                "div",
+                                { class: "vs-badge" },
+                                "VS",
+                                -1,
+                              )),
+                            (0, r.createElementVNode)("div", f, [
+                              t[2] ||
+                                (t[2] = (0, r.createElementVNode)(
+                                  "div",
+                                  { class: "arena-side-label" },
+                                  "DC",
+                                  -1,
+                                )),
+                              (0, r.createElementVNode)("div", u, [
+                                (0, r.createElementVNode)(
+                                  "span",
+                                  C,
+                                  (0, r.toDisplayString)(p.value),
+                                  1,
+                                ),
+                              ]),
+                            ]),
+                          ]),
+                          (0, r.createElementVNode)("div", g, [
+                            (0, r.createElementVNode)(
+                              "div",
+                              {
+                                class: (0, r.normalizeClass)([
+                                  "check-result",
+                                  { "is-visible": w.value },
+                                ]),
+                              },
+                              (0, r.toDisplayString)(v.value),
+                              3,
+                            ),
+                            (0, r.createElementVNode)(
+                              "div",
+                              {
+                                class: (0, r.normalizeClass)([
+                                  "roll-details",
+                                  { "is-visible": w.value },
+                                ]),
+                              },
+                              [
+                                (0, r.createElementVNode)(
+                                  "div",
+                                  m,
+                                  (0, r.toDisplayString)(h.value),
+                                  1,
+                                ),
+                                t[4] ||
+                                  (t[4] = (0, r.createElementVNode)(
+                                    "div",
+                                    { class: "roll-formula" },
+                                    "Cơ sở tung: 1d20 + bổ chính thuộc tính (trên 25, mỗi 10 điểm được +1)",
+                                    -1,
+                                  )),
+                              ],
+                              2,
+                            ),
+                          ]),
+                        ]),
+                      ],
+                      2,
+                    ),
+                  ]),
+                ])
+              )
+            );
+          },
+        });
+      a(69);
+      const b = (0, a(248).A)(p, [["__scopeId", "data-v-34f50bf3"]]);
+      $(() => {
+        const n = (0, r.createApp)(b).use(e());
+        (n.mount("#app"), $(window).on("pagehide", () => n.unmount()));
+      });
+      //# sourceMappingURL=index.js.map
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>
